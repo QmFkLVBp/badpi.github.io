@@ -1,11 +1,3 @@
-:root {
-    --neon-pink: #FF00FF;
-    --neon-cyan: #00FFFF;
-    --background: #0d021a;
-    --terminal-bg: #1a0530;
-    --text-color: #e0e0e0;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -13,112 +5,107 @@
 }
 
 body {
-    background-color: var(--background);
-    color: var(--text-color);
-    font-family: 'VT323', monospace;
-    font-size: 1.5rem;
+    font-family: 'Roboto Mono', monospace;
+    background-color: #2E3440;
+    color: #D8DEE9;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 1rem;
-    overflow: hidden;
+    padding: 2rem;
 }
 
-.scanlines {
-    position: absolute;
-    top: 0;
-    left: 0;
+.card {
+    background-color: #3B4252;
+    border: 1px solid #4C566A;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 650px;
     width: 100%;
-    height: 100%;
-    pointer-events: none;
-    background: linear-gradient(
-        to bottom,
-        rgba(18, 16, 16, 0) 50%,
-        rgba(0, 0, 0, 0.2) 50%
-    );
-    background-size: 100% 4px;
-    z-index: 100;
-    animation: scan 0.1s linear infinite;
+    padding: 3rem;
+    text-align: center;
+    
+    animation: fadeIn 1s ease-out;
 }
 
-@keyframes scan {
-    from { background-position: 0 0; }
-    to { background-position: 0 4px; }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.terminal-window {
-    width: 100%;
-    max-width: 800px;
-    background-color: var(--terminal-bg);
-    border: 2px solid var(--neon-pink);
-    border-radius: 8px;
-    box-shadow: 0 0 25px var(--neon-pink), inset 0 0 10px var(--neon-pink);
-    animation: textFlicker 3s linear infinite alternate;
-}
-
-.terminal-header {
-    background: #300a52;
-    padding: 0.5rem;
-    border-bottom: 2px solid var(--neon-pink);
-    display: flex;
-    gap: 8px;
-}
-
-.terminal-header span {
-    width: 15px;
-    height: 15px;
+.avatar {
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
-    background: #4e147d;
-}
-.terminal-header span:first-child { background: #FF3B30; }
-.terminal-header span:nth-child(2) { background: #FF9500; }
-.terminal-header span:nth-child(3) { background: #4CD964; }
-
-.terminal-body {
-    padding: 1.5rem;
-    height: 60vh;
-    min-height: 400px;
-    overflow-y: auto;
+    border: 4px solid #88C0D0;
+    margin-bottom: 1.5rem;
+    object-fit: cover;
 }
 
-#terminal-content {
-    white-space: pre-wrap;
-    word-wrap: break-word;
+h1 {
+    color: #ECEFF4;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
 }
 
-#terminal-content span.prompt { color: var(--neon-cyan); }
-#terminal-content span.user { color: #fff; font-weight: bold; }
-#terminal-content span.info { color: var(--text-color); }
-#terminal-content span.section { color: var(--neon-pink); }
+.title {
+    color: #88C0D0;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
 
-#terminal-content a {
-    color: var(--neon-cyan);
+.description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #D8DEE9;
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #434C5E;
+    color: #ECEFF4;
     text-decoration: none;
-}
-#terminal-content a:hover {
-    background-color: var(--neon-cyan);
-    color: var(--background);
-}
-
-.cursor {
-    display: inline-block;
-    width: 1rem;
-    height: 1.5rem;
-    background-color: var(--neon-pink);
-    animation: blink 1s steps(1) infinite;
-    position: relative;
-    top: 4px;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 
-@keyframes blink {
-    50% { opacity: 0; }
+.links a i {
+    margin-right: 0.75rem;
+    color: #81A1C1;
+    transition: color 0.3s ease;
 }
 
-@keyframes textFlicker {
-    0% { opacity: 1; }
-    49% { opacity: 1; }
-    50% { opacity: 0.9; }
-    99% { opacity: 0.9; }
-    100% { opacity: 1; }
+.links a:hover {
+    background-color: #81A1C1;
+    color: #2E3440;
+    transform: translateY(-4px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.links a:hover i {
+    color: #2E3440;
 }
